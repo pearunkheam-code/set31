@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velora Coffee</title>
+  
+  <!-- ប្រើប្រាស់ GSAP Library សម្រាប់ធ្វើ Animated Motion -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <!-- ផ្នែក CSS (រចនាម៉ូដ និងពណ៌) -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #0b2219; /* ពណ៌បៃតងចាស់ */
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* Header Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 25px 80px;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .navbar ul {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .navbar a {
+      color: #b0c4bc;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 80px;
+      min-height: 70vh;
+    }
+
+    .title {
+      font-size: 64px;
+      line-height: 1.1;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .subtitle {
+      color: #a0b5ab;
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .btn-primary {
+      background-color: #174033;
+      color: #55f3a6;
+      border: 1px solid #235c49;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #fff;
+      border: 1px solid #365e50;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* Section រូបភាពអណ្តែត */
+    .hero-image-container {
+      position: relative;
+      width: 450px;
+      height: 450px;
+    }
+
+    .coffee-glass {
+      width: 100%;
+      position: absolute;
+      z-index: 2;
+    }
+
+    .bean {
+      position: absolute;
+      width: 40px;
+      z-index: 1;
+    }
+
+    .bean-1 { top: 10%; left: 10%; }
+    .bean-2 { bottom: 20%; left: -20px; }
+    .bean-3 { top: 40%; right: -30px; }
+
+    /* Mini Menu ខាងក្រោម */
+    .mini-menu {
+      display: flex;
+      gap: 15px;
+      padding: 0 80px;
+    }
+
+    .card {
+      width: 70px;
+      height: 70px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card img {
+      width: 70%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ផ្នែក Header -->
+  <header class="navbar">
+    <div class="logo">VELORA <span>COFFEE</span></div>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Our Drinks</a></li>
+        <li><a href="#">Experience</a></li>
+        <li><a href="#">Rewards</a></li>
+        <li><a href="#">Visit</a></li>
+      </ul>
+    </nav>
+    <div class="cart-icon">🛒</div>
+  </header>
+
+  <!-- ផ្នែក Hero Content -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1 class="title">PURE JOY IN<br>EVERY SIP</h1>
+      <p class="subtitle">Handcrafted coffee, perfected daily</p>
+      <div class="hero-buttons">
+        <button class="btn btn-primary">Order Coffee</button>
+        <button class="btn btn-secondary">Explore Flavors</button>
+      </div>
+    </div>
+
+    <!-- ផ្នែករូបភាពកាហ្វេ និងគ្រាប់កាហ្វេ -->
+    <div class="hero-image-container">
+      <img src="https://i.pinimg.com/1200x/99/d3/bf/99d3bf15bdbdfeeee94a8abc65916393.jpg" alt="Coffee Glass" class="coffee-glass main-floating">
+      <img src="https://i.pinimg.com/736x/3c/92/74/3c92742c4b12737b0af573a9ab4522f2.jpg" alt="Bean" class="bean bean-1">
+      <img src="https://i.pinimg.com/736x/e2/cc/14/e2cc146cc480cc4b5010f8140b2672d9.jpg" alt="Bean" class="bean bean-2">
+      <img src="https://i.pinimg.com/736x/39/50/04/3950043e81df0a6fe161b8e9a27cf038.jpg" alt="Bean" class="bean bean-3">
+    </div>
+  </section>
+
+  <!-- ផ្នែក Menu តូចៗ -->
+  <section class="mini-menu">
+    <div class="card"><img src="https://i.pinimg.com/736x/a7/04/c2/a704c26cb159e168b2385ec0e9957b2c.jpg" alt="Item 1"></div>
+    <div class="card"><img src="https://i.pinimg.com/736x/5a/0b/49/5a0b49e60573729ca1ca267553ae6675.jpg " alt="Item 2"></div>
+    <div class="card"><img src="https://i.pinimg.com/736x/6d/dc/cb/6ddccbc85e51d55fe20487b4785e4461.jpg" alt="Item 3"></div>
+    <div class="card"><img src="https://i.pinimg.com/736x/74/dd/17/74dd17cdf0e682d8e827c3999af24c0b.jpg" alt="Item 4"></div>
+  </section>
+
+  <!-- ផ្នែក JavaScript សម្រាប់ចលនា (Animations) -->
+  <script>
+    // ១. ចលនាបង្ហាញដំបូងពេល Load Page
+    gsap.from(".logo, nav, .cart-icon", {
+      y: -30,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.1,
+      ease: "power2.out"
+    });
+
+    gsap.from(".title, .subtitle, .hero-buttons", {
+      x: -50,
+      opacity: 0,
+      duration: 1.2,
+      delay: 0.3,
+      stagger: 0.2,
+      ease: "power3.out"
+    });
+
+    gsap.from(".coffee-glass", {
+      scale: 0.8,
+      opacity: 0,
+      duration: 1.5,
+      delay: 0.5,
+      ease: "back.out(1.7)"
+    });
+
+    // ២. ចលនាអណ្តែតចុះឡើង (Floating Effects)
+    gsap.to(".main-floating", {
+      y: 15,
+      repeat: -1,
+      yoyo: true,
+      duration: 2.5,
+      ease: "sine.inOut"
+    });
+
+    gsap.to(".bean-1", {
+      y: -20,
+      rotation: 45,
+      repeat: -1,
+      yoyo: true,
+      duration: 3,
+      ease: "sine.inOut"
+    });
+
+    gsap.to(".bean-2", {
+      y: 20,
+      rotation: -30,
+      repeat: -1,
+      yoyo: true,
+      duration: 2.2,
+      ease: "sine.inOut"
+    });
+
+    gsap.to(".bean-3", {
+      y: -15,
+      rotation: 60,
+      repeat: -1,
+      yoyo: true,
+      duration: 2.8,
+      ease: "sine.inOut"
+    });
+  </script>
+</body>
+</html>
